@@ -13,10 +13,30 @@ client.load_extension("cogs.musicCog")
 @client.command()
 async def sneeze(ctx):
 
-    voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Squad Voice')
+    voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
     vc = await voiceChannel.connect()
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     voice.play(discord.FFmpegPCMAudio("sneeze.mp3"))
+    await sleep(1)
+    await vc.disconnect()
+
+@client.command()
+async def fart(ctx):
+
+    voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
+    vc = await voiceChannel.connect()
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    voice.play(discord.FFmpegPCMAudio("fart.mp3"))
+    await sleep(1)
+    await vc.disconnect()
+
+@client.command()
+async def throwup(ctx):
+
+    voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
+    vc = await voiceChannel.connect()
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    voice.play(discord.FFmpegPCMAudio("throwUp.mp3"))
     await sleep(1)
     await vc.disconnect()
 
