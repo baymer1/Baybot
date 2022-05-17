@@ -11,203 +11,72 @@ client = commands.Bot(command_prefix="!")
 
 client.load_extension("cogs.musicCog")
 
-
-@client.command()
-async def fart(ctx, *, channel = None):
-    
-    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
+async def playsound(ctx, *, channel = None, soundName, soundTime):
     try:
         if not channel:
             voiceChannel = ctx.author.voice.channel
         else:
             voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
-    except AttributeError:
-        await ctx.send("You're not in a VC :( Please join... please...")
+        except AttributeError:
+            await ctx.send("You're not in a VC :( Please join... please...")
+            
+        vc await voiceChannel.connect()
+        voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+        voice.play(discord.FFmpegPCMAudio(soundName))
+        await sleep(soundTime)
+        await vc.disconnect
         
+@client.command()
+async def fart(ctx, *, channel = None):
     
-    vc = await voiceChannel.connect()
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.play(discord.FFmpegPCMAudio("fart.mp3"))
-    await sleep(1)
-    await vc.disconnect()
-
-#@client.event
-#async def on_message(message):
-    #if message.content.find("test") != -1:
-        #await message.channel.send("HI!")
+    playsound(ctx, *, channel = None, "fart.mp3", 1)
 
 @client.command()
 async def sneeze(ctx, *, channel = None):
     
-    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
-    try:
-        if not channel:
-            voiceChannel = ctx.author.voice.channel
-        else:
-            voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
-    except AttributeError:
-        await ctx.send("You're not in a VC :( Please join... please...")
-        
-    
-    vc = await voiceChannel.connect()
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.play(discord.FFmpegPCMAudio("sneeze.mp3"))
-    await sleep(1)
-    await vc.disconnect()
+    playsound(ctx, *, channel = None, "sneeze.mp3", 1)
 
 @client.command()
 async def thanks(ctx, *, channel = None):
     
-    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
-    try:
-        if not channel:
-            voiceChannel = ctx.author.voice.channel
-        else:
-            voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
-    except AttributeError:
-        await ctx.send("You're not in a VC :( Please join... please...")
-        
-    
-    vc = await voiceChannel.connect()
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.play(discord.FFmpegPCMAudio("tyForComing.mp3"))
-    await sleep(2)
-    await vc.disconnect()
+    playsound(ctx, *, channel = None, "tyForComing.mp3", 2)
 
 @client.command()
 async def slurp(ctx, *, channel = None):
     
-    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
-    try:
-        if not channel:
-            voiceChannel = ctx.author.voice.channel
-        else:
-            voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
-    except AttributeError:
-        await ctx.send("You're not in a VC :( Please join... please...")
-        
-    
-    vc = await voiceChannel.connect()
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.play(discord.FFmpegPCMAudio("slurp.mp3"))
-    await sleep(1)
-    await vc.disconnect()
+    playsound(ctx, *, channel = None, "slurp.mp3", 1)
 
 @client.command()
 async def itgo(ctx, *, channel = None):
     
-    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
-    try:
-        if not channel:
-            voiceChannel = ctx.author.voice.channel
-        else:
-            voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
-    except AttributeError:
-        await ctx.send("You're not in a VC :( Please join... please...")
-        
-    
-    vc = await voiceChannel.connect()
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.play(discord.FFmpegPCMAudio("itGo.mp3"))
-    await sleep(3)
-    await vc.disconnect()
+    playsound(ctx, *, channel = None, "itGo.mp3", 3)
 
 
 
 @client.command()
 async def beastmode(ctx, *, channel = None):
     
-    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
-    try:
-        if not channel:
-            voiceChannel = ctx.author.voice.channel
-        else:
-            voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
-    except AttributeError:
-        await ctx.send("You're not in a VC :( Please join... please...")
-        
-    
-    vc = await voiceChannel.connect()
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.play(discord.FFmpegPCMAudio("beastMode.mp3"))
-    await sleep(8)
-    await vc.disconnect()
+    playsound(ctx, *, channel = None, "beastMode.mp3", 8)
     
 @client.command()
 async def throwup(ctx, *, channel = None):
     
-    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
-    try:
-        if not channel:
-            voiceChannel = ctx.author.voice.channel
-        else:
-            voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
-    except AttributeError:
-        await ctx.send("You're not in a VC :( Please join... please...")
-        
-    
-    vc = await voiceChannel.connect()
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.play(discord.FFmpegPCMAudio("throwUp.mp3"))
-    await sleep(1)
-    await vc.disconnect()
+    playsound(ctx, *, channel = None, "throwUp.mp3", 1)
     
 @client.command()
 async def sus(ctx, *, channel = None):
     
-    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
-    try:
-        if not channel:
-            voiceChannel = ctx.author.voice.channel
-        else:
-            voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
-    except AttributeError:
-        await ctx.send("You're not in a VC :( Please join... please...")
-        
-    
-    vc = await voiceChannel.connect()
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.play(discord.FFmpegPCMAudio("sus.mp3"))
-    await sleep(3)
-    await vc.disconnect()
+    playsound(ctx, *, channel = None, "sus.mp3", 3)
     
 @client.command()
 async def totm(ctx, *, channel = None):
     
-    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
-    try:
-        if not channel:
-            voiceChannel = ctx.author.voice.channel
-        else:
-            voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
-    except AttributeError:
-        await ctx.send("You're not in a VC :( Please join... please...")
-        
-    
-    vc = await voiceChannel.connect()
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.play(discord.FFmpegPCMAudio("totm.mp3"))
-    await sleep(6)
-    await vc.disconnect()
+    playsound(ctx, *, channel = None, "totm.mp3", 6)
 
 @client.command()
 async def lgts(ctx, *, channel = None):
     
-    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
-    try:
-        if not channel:
-            voiceChannel = ctx.author.voice.channel
-        else:
-            voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
-    except AttributeError:
-        await ctx.send("You're not in a VC :( Please join... please...")
-        
-    
-    vc = await voiceChannel.connect()
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.play(discord.FFmpegPCMAudio("lgts.mp3"))
-    await sleep(3)
-    await vc.disconnect()
+    playsound(ctx, *, channel = None, "lgts.mp3", 3)
 
 @client.command()
 async def dab(ctx):
