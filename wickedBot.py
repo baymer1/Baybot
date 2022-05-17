@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import youtube_dl
 import os
-import tokenFile
+import tokenFile2
 from asyncio import sleep
 
 
@@ -31,10 +31,10 @@ async def fart(ctx, *, channel = None):
     await sleep(1)
     await vc.disconnect()
 
-#@client.event
-#async def on_message(message):
-    #if message.content.find("test") != -1:
-        #await message.channel.send("HI!")
+@client.event
+async def on_message(message):
+    if message.content.find("test") != -1:
+        await message.channel.send("HI!")
 
 @client.command()
 async def sneeze(ctx, *, channel = None):
