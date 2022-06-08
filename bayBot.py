@@ -92,6 +92,26 @@ async def slurp(ctx, *, channel = None):
     voice.play(discord.FFmpegPCMAudio("slurp.mp3"))
     await sleep(1)
     await vc.disconnect()
+    
+    
+@client.command()
+async def british(ctx, *, channel = None):
+    
+    #voiceChannel = discord.utils.get(ctx.guild.voice_channels, name='Voice')
+    try:
+        if not channel:
+            voiceChannel = ctx.author.voice.channel
+        else:
+            voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
+    except AttributeError:
+        await ctx.send("You're not in a VC :( Please join... please...")
+        
+    
+    vc = await voiceChannel.connect()
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    voice.play(discord.FFmpegPCMAudio("british.mp3"))
+    await sleep(4)
+    await vc.disconnect()
 
 @client.command()
 async def itgo(ctx, *, channel = None):
